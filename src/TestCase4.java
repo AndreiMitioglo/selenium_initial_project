@@ -27,12 +27,20 @@ public class TestCase4 {
 
         for(int i = 0; i < inputInfoBoxes.size(); i++){
             // First two validation
-            System.out.println("Is displayed and enabled" + (inputInfoBoxes.get(i).isDisplayed() && inputInfoBoxes.get(i).isEnabled() ? "PASSED" : "FAILED"));
+            System.out.println("Is displayed and enabled " + (inputInfoBoxes.get(i).isDisplayed() && inputInfoBoxes.get(i).isEnabled() ? "PASSED" : "FAILED"));
             // Third validation
             inputInfoBoxes.get(i).sendKeys(userInfo[i]);
-            System.out.println("Input keys match" +( (inputInfoBoxes.get(i).getAttribute("value").equals(userInfo[i]))? "PASSED" : "FAILED"));
+            System.out.println("Input keys match " +( (inputInfoBoxes.get(i).getAttribute("value").equals(userInfo[i]))? "PASSED" : "FAILED"));
             //Forth validation
             System.out.println(inputInfoLabels.get(i).getText().equals(expectedLabels[i])? "PASSED" : "FAILED");
+
+
+            System.out.println(messageInfoBox.isDisplayed() && messageInfoBox.isEnabled() ?  "PASSED" : "FAILED");
+
+            messageInfoBox.sendKeys(userInfo[3]);
+            System.out.println((messageInfoBox.getText().equals(userInfo[3]) ?  "PASSED" : "FAILED"));
+
+            System.out.println((messageInfoBox.getAttribute("placeholder").equals( expectedLabels[3])) ?  "PASSED" : "FAILED");
         }
         Driver.quitDriver();
     }
